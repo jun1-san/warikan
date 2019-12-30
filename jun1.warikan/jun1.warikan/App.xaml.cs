@@ -4,6 +4,7 @@ using jun1.warikan.ViewModels;
 using jun1.warikan.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Prism.Mvvm;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace jun1.warikan
@@ -30,6 +31,15 @@ namespace jun1.warikan
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+        }
+
+        /// <summary>
+        /// ViewModelの場所定義
+        /// </summary>
+        protected override void ConfigureViewModelLocator()
+        {
+            base.ConfigureViewModelLocator();
+            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver(ViewTypeToViewModelTypeResolver.Resolve);
         }
     }
 }

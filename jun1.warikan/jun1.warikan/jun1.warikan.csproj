@@ -5,8 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="ViewModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\jun1.warikan.ViewModels\jun1.warikan.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
