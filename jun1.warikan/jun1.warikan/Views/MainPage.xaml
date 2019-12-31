@@ -4,35 +4,36 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="jun1.warikan.Views.MainPage"
+             Visual="Material"
              Title="{Binding Title}">
 
-    <StackLayout>
+    <StackLayout HorizontalOptions="FillAndExpand">
         <!-- 合計額入力欄 -->
         <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <StackLayout Orientation="Vertical">
-                <Label Text="合計額入力（税込）"></Label>
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="TotalPrice" Placeholder="合計額" Text="{Binding TotalPrice}" Keyboard="Numeric"></Entry>
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <Label Text="合計額入力（税込）" FontSize="Medium"></Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Entry x:Name="TotalPrice" Placeholder="合計額" Text="{Binding TotalPrice}" Keyboard="Numeric" WidthRequest="200"></Entry>
                     <Button Text="計算する" Command="{Binding CalculateButton}"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal">
-                <Entry x:Name="NewMember" Placeholder="参加者" Text="{Binding NewMemberName}" Keyboard="Text"></Entry>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Entry x:Name="NewMember" Placeholder="参加者" Text="{Binding NewMemberName}" Keyboard="Text" WidthRequest="250"></Entry>
                 <Button Text="追加" Command="{Binding AddMemberButton}"></Button>
             </StackLayout>
-            <ListView ItemsSource="{Binding Members}">
+            <ListView ItemsSource="{Binding Members}" BackgroundColor="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="35"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" Grid.Column="0"></Label>
-                                <Label Text="{Binding Amount}" Grid.Column="1"></Label>
+                                <Label Text="{Binding Name}" Grid.Column="0" FontSize="Large"></Label>
+                                <Label Text="{Binding Amount, StringFormat='{0:C}'}" Grid.Column="1" FontSize="Large"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

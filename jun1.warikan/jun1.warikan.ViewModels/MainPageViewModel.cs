@@ -39,13 +39,13 @@ namespace jun1.warikan.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error!","参加者を登録してください。","閉じる");
                 return;
             }
-            if (this.TotalPrice <= 0)
+            if (this.TotalPrice.GetValueOrDefault(0) <= 0)
             {
                 await Application.Current.MainPage.DisplayAlert("Error!", "合計額を入力してください。", "閉じる");
                 return;
             }
-            var divided = decimal.Truncate(decimal.Divide(this.TotalPrice, this.Members.Count));
-            var fraction = this.TotalPrice % this.Members.Count;
+            var divided = decimal.Truncate(decimal.Divide(this.TotalPrice.Value, this.Members.Count));
+            var fraction = this.TotalPrice.Value % this.Members.Count;
             foreach(var member in this.Members)
             {
                 member.Amount = divided;
@@ -71,9 +71,9 @@ namespace jun1.warikan.ViewModels
         #endregion
 
         #region プロパティ
-        private decimal _totalPrice;
+        private decimal? _totalPrice;
         /// <summary>合計金額</summary>
-        public decimal TotalPrice
+        public decimal? TotalPrice
         {
             get { return _totalPrice; }
             set { SetProperty(ref _totalPrice, value); }

@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms;
 
 namespace jun1.warikan.Droid
 {
@@ -17,6 +18,7 @@ namespace jun1.warikan.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.FormsMaterial.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
