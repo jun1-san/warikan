@@ -56,8 +56,13 @@ namespace jun1.warikan.ViewModels
         /// <summary>
         /// 参加者追加
         /// </summary>
-        private void AddMember()
+        private async void AddMember()
         {
+            if (string.IsNullOrEmpty(this.NewMemberName))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error!", "参加者を入力してください。", "閉じる");
+                return;
+            }
             var member = new Member { Name = this.NewMemberName };
             this.Members.Add(member);
             this.NewMemberName = string.Empty;
