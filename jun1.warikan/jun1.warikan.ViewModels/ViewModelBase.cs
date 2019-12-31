@@ -12,6 +12,8 @@ namespace jun1.warikan.ViewModels
         protected INavigationService NavigationService { get; private set; }
 
         private string _title;
+
+        /// <summary>画面タイトル</summary>
         public string Title
         {
             get { return _title; }
